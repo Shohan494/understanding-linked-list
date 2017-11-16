@@ -45,27 +45,46 @@ function LinkedList() {
     if (position > -1 && position < length)
     {
         console.log("The given position is valid");
-         var current = head, // {2}            
-         previous, // {3}            
-         index = 0; // {4}
+        var current = head, // {2}
+        previous, // {3}            
+        index = 0; // {4}
+        console.log("current = head, index = 0");
+        console.log("current", current);
+        
         //removing first item        
         if (position === 0)
         { // {5}
-        console.log("The position is 0, means we have to delete the head element");
+            console.log("The position is 0, means we have to delete the head element");
             head = current.next;
-        console.log("So we have moved the (current.next) element to the (head)");            
-        } else {
+            console.log("head = current.next");
+            console.log("head ", head)
+            console.log("So we have moved the (current.next) element to the (head)");            
+        } 
+        
+        else 
+        {
         while (index++ < position)
         {
+        console.log("\n");
         console.log("inside while loop")
+        console.log("index and position", index, position);
+        console.log("\n");
         previous = current;     // {7}
-        console.log("previous = current", previous, current);              
+        console.log("previous = current");
+        console.log("previous", previous);
+        console.log("\n");           
         current = current.next; // {8}
-        console.log("current = current.next", current, current.next);     
+        console.log("current = current.next"); 
+        console.log("current", current);
+        console.log("\n");
         }
-        //link previous with current's next: skip it to remove            
+        //link previous with current's next: skip it to remove 
+        console.log("Outside of while loop");          
         previous.next = current.next; // {9}
-        console.log("previous.next = current.next", previous.next, current.next);        
+        console.log("previous.next = current.next");        
+        console.log("previous.next", previous.next);
+        console.log("\n");
+
     }   
         length--; // {10}
         console.log("current.element", current.element);
@@ -75,10 +94,9 @@ function LinkedList() {
     {        
         return null; // {11}
     } };
-    }
+    
+}
 
-}
-}
 
 var list = new LinkedList();
 list.append(1);
@@ -90,5 +108,9 @@ console.log("\n");
 list.append(4);
 console.log("\n");
 console.log("\n");
+//list.removeAt(0);
+//console.log("\n");
+//console.log("\n");
 list.removeAt(1);
+
 
