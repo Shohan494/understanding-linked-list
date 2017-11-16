@@ -8,7 +8,8 @@ function LinkedList() {
     let length = 0;
     let head = null;
 
-    this.append = function(element){
+    this.append = function(element)
+    {
         let node = new Node(element),
             current;
         console.log("Created a new 'node' variable by calling the Node constructor", node);
@@ -36,6 +37,47 @@ function LinkedList() {
         }
         length++; //update size of list
     };
+
+    
+    this.removeAt = function(position)
+    {
+    //check for out-of-bounds values
+    if (position > -1 && position < length)
+    {
+        console.log("The given position is valid");
+         var current = head, // {2}            
+         previous, // {3}            
+         index = 0; // {4}
+        //removing first item        
+        if (position === 0)
+        { // {5}
+        console.log("The position is 0, means we have to delete the head element");
+            head = current.next;
+        console.log("So we have moved the (current.next) element to the (head)");            
+        } else {
+        while (index++ < position)
+        {
+        console.log("inside while loop")
+        previous = current;     // {7}
+        console.log("previous = current", previous, current);              
+        current = current.next; // {8}
+        console.log("current = current.next", current, current.next);     
+        }
+        //link previous with current's next: skip it to remove            
+        previous.next = current.next; // {9}
+        console.log("previous.next = current.next", previous.next, current.next);        
+    }   
+        length--; // {10}
+        console.log("current.element", current.element);
+        return current.element;
+
+    } else 
+    {        
+        return null; // {11}
+    } };
+    }
+
+}
 }
 
 var list = new LinkedList();
@@ -46,3 +88,7 @@ console.log("\n");
 list.append(3);
 console.log("\n");
 list.append(4);
+console.log("\n");
+console.log("\n");
+list.removeAt(1);
+
